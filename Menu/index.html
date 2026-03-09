@@ -136,7 +136,8 @@
                 <p>Dashboard Central Tools</p>
             </div>
             <div class="menu-list">
-                <button class="btn-menu" onclick="showPage('page-link')"><span style="margin-right:15px;">🔗</span> Akses Link Member</button>
+                <button class="btn-menu" onclick="showPage('page-link')"><span style="margin-right:15px;">🔗</span> Akses Link MYLEAD</button>
+                <button class="btn-menu" onclick="showPage('page-link-mobidea')"><span style="margin-right:15px;">🔗</span> Akses Link MOBIDEA</button>
                 <button class="btn-menu" onclick="showPage('page-jam')"><span style="margin-right:15px;">⏰</span> Jam Spam (Opsional)</button>
                 <button class="btn-menu" onclick="showPage('page-video')"><span style="margin-right:15px;">🎬</span> Video Acara</button>
                 <button class="btn-menu btn-snk-special" onclick="checkSnk()"><span style="margin-right:15px;">📜</span> S&K Rekrutmen Member</button>
@@ -146,7 +147,7 @@
         <div id="page-link" class="page-section">
             <button class="btn-kembali" onclick="goHome()">⬅ Kembali ke Menu</button>
             <div id="list-member">
-                <h3 align="center">Pilih Sesuai Username Masing-Masing</h3>
+                <h3 align="center">Pilih Username (MYLEAD)</h3>
                 <button class="member-btn" onclick="openLink('thorfin', 'Thorfin')">🗡️ Thorfin</button>
                 <button class="member-btn" onclick="openLink('poseidon', 'Poseidon')">🔱 Poseidon</button>
                 <button class="member-btn" onclick="openLink('luxury33', 'Luxury33')">💎 Luxury33</button>
@@ -157,6 +158,23 @@
             <div id="detail-link" style="display:none;">
                 <h3 align="center" id="active-name" style="color:#38bdf8;"></h3>
                 <div id="render-links"></div>
+            </div>
+        </div>
+
+        <div id="page-link-mobidea" class="page-section">
+            <button class="btn-kembali" onclick="goHome()">⬅ Kembali ke Menu</button>
+            <div id="list-member-mobidea">
+                <h3 align="center">Pilih Username (MOBIDEA)</h3>
+                <button class="member-btn" onclick="openLinkMobidea('thorfin', 'Thorfin')">🗡️ Thorfin</button>
+                <button class="member-btn" onclick="openLinkMobidea('poseidon', 'Poseidon')">🔱 Poseidon</button>
+                <button class="member-btn" onclick="openLinkMobidea('luxury33', 'Luxury33')">💎 Luxury33</button>
+                <button class="member-btn" onclick="openLinkMobidea('batako', 'Batako')">🧱 Batako</button>
+                <button class="member-btn" onclick="openLinkMobidea('kahuna', 'Kahuna Laguna')">🌊 Kahuna Laguna</button>
+                <button class="member-btn" onclick="openLinkMobidea('angin', 'Angin')">🌪️ Angin</button>
+            </div>
+            <div id="detail-link-mobidea" style="display:none;">
+                <h3 align="center" id="active-name-mobidea" style="color:#38bdf8;"></h3>
+                <div id="render-links-mobidea"></div>
             </div>
         </div>
 
@@ -209,7 +227,7 @@
                 <p>Sebagai pihak yang mengajak (Mentor), kalian WAJIB mengajarkan cara kerja yang benar. Tegaskan kepada member baru larangan mutlak ini: <span class="danger">DILARANG KERAS</span> menggunakan BOT atau melakukan self-click (nuyul link sendiri) menggunakan VPN. Pelanggaran akan berakibat fatal pada semua orang termasuk atmin.</p>
 
                 <div class="snk-title">2. Sistem Margin / Set Rate Pendapatan 💰</div>
-                <p>Kalian bebas menentukan rate untuk orang yang kalian ajak, dengan syarat rate tersebut harus lebih rendah dari rate asli kalian. (Contoh: Jika rate Torpedo 11k, kalian bisa atur rate member di 10k atau sesuai kesepakatan). Selisih rate ini adalah murni keuntungan kalian, karena <span class="highlight">5k buat atmin</span> untuk biaya domain dan pajak wd.</p>
+                <p>anda bebas menentukan rate untuk orang yang anda ajak, dengan syarat rate tersebut harus lebih rendah dari rate asli anda. (Contoh: Jika rate anda 11k, anda bisa atur rate member yang di ajak di 10k atau sesuai kesepakatan selisih 1k). Selisih rate ini adalah murni keuntungan anda. <span class="highlight">sisanya untuk biaya domain dan pajak wd. </span></p>
 
                 <div class="snk-title">3. Persiapan Username (Sub-ID MyLead) 🆔</div>
                 <p>Sebelum mendaftarkan member, pastikan kalian sudah menyiapkan satu Username khusus untuk mereka. Username ini akan dijadikan parameter Sub-ID di MyLead agar hasil kerja (lead) mereka bisa dilacak dengan akurat.</p>
@@ -233,6 +251,7 @@
     <script>
         const PASS_SNK = "666Lupo666";
 
+        // DATA LINK MYLEAD
         const linksData = {
             'thorfin': { monopoly: "https://tinyurl.com/yeyk6b6t", gossip: "https://tinyurl.com/4k5rn38k", travel: "https://tinyurl.com/4ttyrnay", match: "https://tinyurl.com/3p76vbe6", dating: "https://tinyurl.com/3ye5j2we" },
             'poseidon': { monopoly: "https://tinyurl.com/5d4z9jz3", gossip: "https://tinyurl.com/5ywbpc75", travel: "https://tinyurl.com/mpk4t8hk", match: "https://tinyurl.com/33yd579h", dating: "-" },
@@ -240,6 +259,16 @@
             'batako': { monopoly: "https://tinyurl.com/2p9kcv2z", gossip: "https://tinyurl.com/mr4v32aw", travel: "-", match: "https://tinyurl.com/yfzddp39", dating: "-" },
             'kahuna': { monopoly: "https://tinyurl.com/m3xz6s8v", gossip: "https://tinyurl.com/yc52864j", travel: "https://tinyurl.com/ja4fhura", match: "https://tinyurl.com/26sxswe5", dating: "-" },
             'angin': { monopoly: "https://tinyurl.com/4wfj94nc", gossip: "https://tinyurl.com/3r39xh9j", travel: "https://tinyurl.com/yc559ude", match: "https://tinyurl.com/5868a3ez", dating: "https://tinyurl.com/mr443de2" }
+        };
+
+        // DATA LINK MOBIDEA (Silakan edit link di sini nantinya)
+        const linksMobideaData = {
+            'thorfin': { monopoly: "", gossip: "", travel: "", match: "", dating: "" },
+            'poseidon': { monopoly: "", gossip: "", travel: "", match: "", dating: "-" },
+            'luxury33': { monopoly: "", gossip: "", travel: "-", match: "-", dating: "-" },
+            'batako': { monopoly: "", gossip: "", travel: "-", match: "", dating: "-" },
+            'kahuna': { monopoly: "", gossip: "", travel: "", match: "", dating: "-" },
+            'angin': { monopoly: "", gossip: "", travel: "", match: "", dating: "" }
         };
 
         const vidsData = {
@@ -259,13 +288,21 @@
         function goHome() {
             document.querySelectorAll('.page-section').forEach(s => s.style.display = 'none');
             document.getElementById('page-main').style.display = 'block';
+            
+            // Reset Tampilan Link agar selalu kembali ke menu daftar nama
+            document.getElementById('list-member').style.display = 'block';
+            document.getElementById('detail-link').style.display = 'none';
+            document.getElementById('list-member-mobidea').style.display = 'block';
+            document.getElementById('detail-link-mobidea').style.display = 'none';
+            
             closeVideo();
         }
 
+        // FUNGSI UNTUK MYLEAD
         function openLink(id, nama) {
             document.getElementById('list-member').style.display = 'none';
             document.getElementById('detail-link').style.display = 'block';
-            document.getElementById('active-name').innerText = nama;
+            document.getElementById('active-name').innerText = nama + " (MyLead)";
             const area = document.getElementById('render-links');
             area.innerHTML = '';
             const data = linksData[id];
@@ -276,6 +313,25 @@
                         <span style="font-weight:700;">${game.toUpperCase()}</span>
                         <input type="text" value="${url}" id="in-${id}-${game}" readonly>
                         <button class="btn-copy-link" onclick="copyFunc('in-${id}-${game}', this)">Salin Link</button>
+                    </div>`;
+            }
+        }
+
+        // FUNGSI UNTUK MOBIDEA
+        function openLinkMobidea(id, nama) {
+            document.getElementById('list-member-mobidea').style.display = 'none';
+            document.getElementById('detail-link-mobidea').style.display = 'block';
+            document.getElementById('active-name-mobidea').innerText = nama + " (Mobidea)";
+            const area = document.getElementById('render-links-mobidea');
+            area.innerHTML = '';
+            const data = linksMobideaData[id];
+            for (const [game, url] of Object.entries(data)) {
+                if(url === "-") continue;
+                area.innerHTML += `
+                    <div class="game-card-link">
+                        <span style="font-weight:700;">${game.toUpperCase()}</span>
+                        <input type="text" value="${url}" id="in-mob-${id}-${game}" readonly>
+                        <button class="btn-copy-link" onclick="copyFunc('in-mob-${id}-${game}', this)">Salin Link</button>
                     </div>`;
             }
         }
@@ -298,8 +354,6 @@
         function closeVideo() {
             document.getElementById('video-folder-view').style.display = 'grid';
             document.getElementById('video-list-view').style.display = 'none';
-            document.getElementById('list-member').style.display = 'block';
-            document.getElementById('detail-link').style.display = 'none';
             document.querySelectorAll('video').forEach(v => v.pause());
         }
 
